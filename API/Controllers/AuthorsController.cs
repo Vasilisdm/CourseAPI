@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [ApiController]
     public class AuthorsController : ControllerBase
     {
         private ICourseLibraryRepository _courseLibraryRepository;
