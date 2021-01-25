@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
+    [Route("api/authors")]
     public class AuthorsController : ControllerBase
     {
         private ICourseLibraryRepository _courseLibraryRepository;
@@ -15,6 +16,7 @@ namespace API.Controllers
                 throw new ArgumentNullException(nameof(CourseLibraryRepository));
         }
 
+        [HttpGet()]
         public IActionResult GetAuthors()
         {
             var authors = _courseLibraryRepository.GetAuthors();
