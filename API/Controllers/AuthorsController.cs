@@ -5,6 +5,7 @@ using CourseLibrary.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using API.Helpers;
 using AutoMapper;
+using API.ResourceParameters;
 
 namespace API.Controllers
 {
@@ -25,9 +26,9 @@ namespace API.Controllers
 
         [HttpGet]
         public ActionResult<IEnumerable<AuthorDTO>> GetAuthors(
-            string mainCategory, string searchQuery)
+            [FromQuery] AuthorResourceParameters authorResourceParameters)
         {
-            var authorsFromRepo = _courseLibraryRepository.GetAuthors(mainCategory, searchQuery);
+            var authorsFromRepo = _courseLibraryRepository.GetAuthors(authorResourceParameters);
 
             return Ok(_mapper.Map<IEnumerable<AuthorDTO>>(authorsFromRepo));
         }
