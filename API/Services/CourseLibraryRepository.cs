@@ -141,9 +141,9 @@ namespace CourseLibrary.API.Services
             {
                 searchQuery = searchQuery.Trim();
                 authorCollection = authorCollection.Where(
-                    a => a.FirstName.Contains(searchQuery)
-                    || a.LastName.Contains(searchQuery)
-                    || a.MainCategory.Contains(searchQuery));
+                    a => a.MainCategory.Contains(searchQuery)
+                    || a.FirstName.Contains(searchQuery)
+                    || a.LastName.Contains(searchQuery));
             }
 
             return authorCollection.ToList();
