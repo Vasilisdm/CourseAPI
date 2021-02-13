@@ -25,7 +25,7 @@ namespace API.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(Mapper));
         }
 
-        [HttpGet("({ids})")]
+        [HttpGet("({ids})" ,Name = "GetAuthorCollection")]
         public IActionResult GetAuthorCollection(
         [FromRoute]
         [ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> guids)
@@ -58,7 +58,11 @@ namespace API.Controllers
 
             _courseLibraryRepository.Save();
 
-            return Ok();
+            var authorCollectionToReturn = _mapper.Map<IEnumerable<AuthorDTO>>(authorEntities);
+            var idsAsString = string.Join(",", authorCollectionToReturn.Select(author => author.Id));
+            return CreatedAtRoute("GetAuthorCollection",
+                new { guids = idsAsString },
+                authorCollectionToReturn);
         }
     }
 }
