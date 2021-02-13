@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace API.Models
 {
     public class AuthorForCreationDTO
@@ -10,5 +12,8 @@ namespace API.Models
         public DateTime DateOfBirth { get; set; }
 
         public string MainCategory { get; set; }
+
+        public ICollection<CourseForCreationDTO> Courses { get; set; } =
+            new List<CourseForCreationDTO>();
     }
 }
