@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using API.Helpers;
 using AutoMapper;
 using API.ResourceParameters;
+using CourseLibrary.API.Entities;
 
 namespace API.Controllers
 {
@@ -48,7 +49,7 @@ namespace API.Controllers
         [HttpPost]
         public ActionResult<AuthorDTO> CreateAuthor(AuthorForCreationDTO author)
         {
-            var authorEntity = _mapper.Map<CourseLibrary.API.Entities.Author>(author);
+            var authorEntity = _mapper.Map<Author>(author);
             _courseLibraryRepository.AddAuthor(authorEntity);
             _courseLibraryRepository.Save();
 
