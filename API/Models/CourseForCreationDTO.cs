@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace API.Models
 {
-    public class CourseForCreationDTO
+    public class CourseForCreationDTO : IValidatableObject
     {
         [Required]
         [MaxLength(100)]
@@ -11,5 +12,15 @@ namespace API.Models
 
         [MaxLength(1500)]
         public string Description { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Title == Description)
+            {
+                yield return new ValidationResult(
+                    "The provided description should be different from the title.",
+                    new[] { "CourseForCreationDTO" })
+            }
+        }
     }
 }
