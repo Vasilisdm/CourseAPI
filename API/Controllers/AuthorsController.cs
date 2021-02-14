@@ -56,5 +56,12 @@ namespace API.Controllers
             var authorToReturn = _mapper.Map<AuthorDTO>(authorEntity);
             return CreatedAtRoute("GetAuthor", new { authorID = authorToReturn.Id }, authorToReturn);
         }
+
+        [HttpOptions]
+        public IActionResult GetAuthorOptions()
+        {
+            Response.Headers.Add("Allow", "GET,OPTIONS,POST");
+            return Ok();
+        }
     }
 }
