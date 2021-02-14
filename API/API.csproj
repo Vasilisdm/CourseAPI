@@ -30,5 +30,6 @@
     <Folder Include="Helpers\" />
     <Folder Include="Profiles\" />
     <Folder Include="ResourceParameters\" />
+    <Folder Include="ValidationAttributes\" />
   </ItemGroup>
 </Project>
