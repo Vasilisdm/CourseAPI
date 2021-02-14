@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using API.Models;
 
 namespace API.ValidationAttributes
@@ -12,7 +11,7 @@ namespace API.ValidationAttributes
             if (course.Title == course.Description)
             {
                 return new ValidationResult(
-                    "The provided description should be different from the title.",
+                    ErrorMessage,
                     new[] { "CourseForCreationDTO" });
             }
 

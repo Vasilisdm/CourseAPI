@@ -3,14 +3,14 @@ using API.ValidationAttributes;
 
 namespace API.Models
 {
-    [CourseTitleMustBeDifferentFromDescription]
+    [CourseTitleMustBeDifferentFromDescription(ErrorMessage = "Title must be different from Description")]
     public class CourseForCreationDTO
     {
-        [Required]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "You should fill out a title")]
+        [MaxLength(100, ErrorMessage = "The Title shouldn't have more than 100 characters.")]
         public string Title { get; set; }
 
-        [MaxLength(1500)]
+        [MaxLength(1500, ErrorMessage = "The Description shouldn't have more than 1500 characters.")]
         public string Description { get; set; }
 
     }
