@@ -26,7 +26,7 @@ namespace API.Helpers
             var elementType = bindingContext.ModelType.GetType().GenericTypeArguments[0];
             var converter = TypeDescriptor.GetConverter(elementType);
 
-            var values = value.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+            var values = value.Split(new [] { "," }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => converter.ConvertFromString(x.Trim()))
                 .ToArray();
 
