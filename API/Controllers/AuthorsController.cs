@@ -58,7 +58,7 @@ namespace API.Controllers
         }
 
         [HttpOptions]
-        public IActionResult GetAuthorOptions()
+        public IActionResult GetAuthorsOptions()
         {
             Response.Headers.Add("Allow", "GET,OPTIONS,POST");
             return Ok();
