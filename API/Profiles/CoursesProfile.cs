@@ -11,6 +11,7 @@ namespace API.Profiles
         {
             CreateMap<Course, CourseDTO>();
             CreateMap<CourseForCreationDTO, Course>();
+            CreateMap<CourseForUpdateDTO, Course>();
         }
     }
 }
